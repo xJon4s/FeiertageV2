@@ -44,7 +44,7 @@ public class aFabrik {
 		case "Feb":
 			temp = "02";
 			break;
-		case "Mar":
+		case "Mär":
 			temp = "03";
 			break;
 		case "Apr":
@@ -102,7 +102,7 @@ public class aFabrik {
 		return ret;
 	}
 	
-	public static ArrayList<ArrayList<feiertag>> fill (String beschreibung, ArrayList<ArrayList<feiertag>> a) {
+	public static ArrayList<ArrayList<feiertag>> fill (String beschreibung) {
 		ArrayList<ArrayList<feiertag>> ret = new ArrayList<ArrayList<feiertag>>(); 
 		for (int i = 2020; i < 2031; i++) {
 			String s = "https://feiertage-api.de/api/?jahr=" + i + "&nur_land=" + beschreibung;

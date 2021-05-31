@@ -70,9 +70,8 @@ public class FeiertageGUI extends JFrame {
 //			System.out.println("An error occurred.");
 //			e.printStackTrace();
 //		}
-		
-		File[] schweiz = { 
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2020.txt"),
+
+		File[] schweiz = { new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2020.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2021.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2022.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2023.txt"),
@@ -84,8 +83,7 @@ public class FeiertageGUI extends JFrame {
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2029.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2030.txt") };
 
-		File[] suedtirol = { 
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2020.txt"),
+		File[] suedtirol = { new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2020.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2021.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2022.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2023.txt"),
@@ -97,8 +95,7 @@ public class FeiertageGUI extends JFrame {
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2029.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2030.txt"), };
 
-		File[] oesterreich = { 
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2020.txt"),
+		File[] oesterreich = { new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2020.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2021.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2022.txt"),
 				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2023.txt"),
@@ -112,8 +109,8 @@ public class FeiertageGUI extends JFrame {
 
 		Ort BZ = new Ort("IT-BZ", aFabrik.produceFromString(suedtirol));
 		anfang.add(BZ);
-		
-		Ort AT = new Ort("AT",aFabrik.produceFromString(oesterreich));
+
+		Ort AT = new Ort("AT", aFabrik.produceFromString(oesterreich));
 		anfang.add(AT);
 
 		ArrayList<ArrayList<feiertag>> bw = new ArrayList<ArrayList<feiertag>>();
@@ -132,70 +129,69 @@ public class FeiertageGUI extends JFrame {
 		ArrayList<ArrayList<feiertag>> st = new ArrayList<ArrayList<feiertag>>();
 		ArrayList<ArrayList<feiertag>> sh = new ArrayList<ArrayList<feiertag>>();
 		ArrayList<ArrayList<feiertag>> th = new ArrayList<ArrayList<feiertag>>();
-		
-		
-//		bw = aFabrik.fill("BW", bw);
-//		by = aFabrik.fill("BY", by);
-//		be = aFabrik.fill("BE", be);
-//		bb = aFabrik.fill("BB", bb);
-//		hb = aFabrik.fill("HB", hb);
-//		hh = aFabrik.fill("HH", hh);
-//		he = aFabrik.fill("HE", he);
-//		mv = aFabrik.fill("MV", mv);
-//		ni = aFabrik.fill("NI", ni);
-//		nw = aFabrik.fill("NW", nw);
-//		rp = aFabrik.fill("RP", rp);
-//		sl = aFabrik.fill("SL", sl);
-//		sn = aFabrik.fill("SN", sn);
-//		st = aFabrik.fill("ST", st);
-//		sh = aFabrik.fill("SH", sh);
-//		th = aFabrik.fill("TH", th);
-		
+
+		bw = aFabrik.fill("BW");
+		by = aFabrik.fill("BY");
+		be = aFabrik.fill("BE");
+		bb = aFabrik.fill("BB");
+		hb = aFabrik.fill("HB");
+		hh = aFabrik.fill("HH");
+		he = aFabrik.fill("HE");
+		mv = aFabrik.fill("MV");
+		ni = aFabrik.fill("NI");
+		nw = aFabrik.fill("NW");
+		rp = aFabrik.fill("RP");
+		sl = aFabrik.fill("SL");
+		sn = aFabrik.fill("SN");
+		st = aFabrik.fill("ST");
+		sh = aFabrik.fill("SH");
+		th = aFabrik.fill("TH");
+
 		Ort BW = new Ort("DE-BW", bw);
 		anfang.add(BW);
-		
+
 		Ort BY = new Ort("DE-BY", by);
 		anfang.add(BY);
-		
+
 		Ort BE = new Ort("DE-BE", be);
 		anfang.add(BE);
-		
+
 		Ort BB = new Ort("DE-BB", bb);
 		anfang.add(BB);
-		
+
 		Ort HB = new Ort("DE-HB", hb);
 		anfang.add(HB);
-		
+
 		Ort HH = new Ort("DE-HH", hh);
 		anfang.add(HH);
-		
+
 		Ort HE = new Ort("DE-HE", he);
 		anfang.add(HE);
-		
+
 		Ort MV = new Ort("DE-MV", mv);
 		anfang.add(MV);
-		
+
 		Ort NI = new Ort("DE-NI", ni);
 		anfang.add(NI);
-		
+
 		Ort NW = new Ort("DE-NW", nw);
 		anfang.add(NW);
-		
+
 		Ort RP = new Ort("DE-RP", rp);
 		anfang.add(RP);
-		
+
 		Ort SL = new Ort("DE-SL", sl);
 		anfang.add(SL);
-		
+
 		Ort SN = new Ort("DE-SN", sn);
 		anfang.add(SN);
-		
+
 		Ort ST = new Ort("DE-ST", st);
 		anfang.add(ST);
-		
+
 		Ort SH = new Ort("DE-SH", sh);
 		anfang.add(SH);
-		
+
 		Ort TH = new Ort("DE-TH", th);
 		anfang.add(TH);
 
@@ -402,26 +398,92 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(cb4);
 
-		//nicht fertig
+		// nicht fertig
 		b4.setBounds(580, 365, 120, 70);
 		b4.setText("EXPORT");
 		b4.setFont(f);
 		b4.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int cb3i = Integer.parseInt((String)cb3.getSelectedItem());
-				int cb4i = Integer.parseInt((String)cb4.getSelectedItem());
-				for (int i = cb3i - 2020; i <= (cb4i-cb3i+(cb3i-2020)); i++) {
-					for (int j = 0; j < oesterreich.length; j++) {
-						
+				// Schritt1:Feiertage getten
+				int cb3i = Integer.parseInt((String) cb3.getSelectedItem());
+				int cb4i = Integer.parseInt((String) cb4.getSelectedItem());
+				ArrayList<ArrayList<feiertag>> finale = new ArrayList<ArrayList<feiertag>>();
+				// Jahr
+				for (int i = cb3i - 2020; i <= (cb4i - cb3i + (cb3i - 2020)); i++) {
+					ArrayList<feiertag> jahr = new ArrayList<feiertag>();
+					// Orte in ende
+					for (int j = 0; j < ende.size(); j++) {
+						// Feiertage in einem Ort j im Jahr i
+						for (int k = 0; k < ende.get(j).getJahr20().get(i).size(); k++) {
+							feiertag temp = new feiertag(ende.get(j).getJahr20().get(i).get(k).getDatum(),
+									ende.get(j).getJahr20().get(i).get(k).getName());
+							// Kontrolle ob hinzuzufuegender Feiertag bereits existiert
+							// Kontrolle ob Array leer => wichtig dass anfaengt zu schreiben
+							if (jahr.size() == 0 && ende.size() > 0) {
+								temp.addOrt(ende.get(j).getBeschreibung());
+								jahr.add(temp);
+							} else {
+								for (int l = 0; l < jahr.size(); l++) {
+									if (jahr.get(l).getDatum().equals(temp.getDatum())) {
+										jahr.get(l).addOrt(ende.get(j).getBeschreibung());
+										break;
+									}
+									if (l == (jahr.size() - 1)) {
+										temp.addOrt(ende.get(j).getBeschreibung());
+										jahr.add(temp);
+										break;
+									}
+
+								}
+							}
+						}
 					}
-					
+					finale.add(jahr);
 				}
-				
-				
-				
-				
+
+				// Schritt2: gutes Format & export????
+				// File
+//				try {
+//					File export = new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\export.txt");
+//					if (export.createNewFile()) {
+//						System.out.println("File created: " + export.getName());
+//					} else {
+//						System.out.println("File already exists.");
+//					}
+//				} catch (IOException e1) {
+//					e1.printStackTrace();
+//				}
+
+				ArrayList<String[]> finalfinal = new ArrayList<String[]>();
+
+				for (int i = 0; i < finale.size(); i++) {
+					for (int j = 0; j < finale.get(i).size(); j++) {
+						String[] write = { finale.get(i).get(j).getDatum(),
+								finale.get(i).get(j).getBeschreibungAsString() };
+						finalfinal.add(write);
+					}
+				}
+
+				try (PrintWriter writer = new PrintWriter(
+						new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\export.csv"))) {
+
+					StringBuilder sb = new StringBuilder();
+					for (int i = 0; i < finalfinal.size(); i++) {
+						sb.append(finalfinal.get(i)[0]);
+						sb.append(';');
+						sb.append(finalfinal.get(i)[1]);
+						sb.append('\n');
+					}
+
+					writer.write(sb.toString());
+
+
+				} catch (FileNotFoundException e3) {
+					e3.printStackTrace();
+				}
+
 			}
 		});
 		getContentPane().add(b4);
