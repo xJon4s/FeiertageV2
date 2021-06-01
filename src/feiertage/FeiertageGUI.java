@@ -19,6 +19,10 @@ import org.json.JSONObject;
 
 public class FeiertageGUI extends JFrame {
 
+	private JMenu menu = new JMenu("");
+	private JMenuBar mb = new JMenuBar();
+	JMenuItem i1 = new JMenuItem();
+
 	private String tat = "";
 	private JLabel l1 = new JLabel();
 	private JLabel l2 = new JLabel();
@@ -27,12 +31,14 @@ public class FeiertageGUI extends JFrame {
 
 	private String[] cbs1 = { "DE", "AT", "CH", "IT-BZ" };
 	private JComboBox<String> cb1 = new JComboBox<String>(cbs1);
-	private String[] cbs2 = { "DE-BW", "DE-BY", "DE-BE", "DE-BB", "DE-HB", "DE-HH", "DE-HE", "DE-MV", "DE-NI", "DE-NW",
-			"DE-RP", "DE-SL", "DE-SN", "DE-ST", "DE-SH", "DE-TH" };
+	private String[] cbs2 = { "Alle", "DE-BW", "DE-BY", "DE-BE", "DE-BB", "DE-HB", "DE-HH", "DE-HE", "DE-MV", "DE-NI",
+			"DE-NW", "DE-RP", "DE-SL", "DE-SN", "DE-ST", "DE-SH", "DE-TH" };
+	private String[] bundeslaender = { "BW", "BY", "BE", "BB", "HB", "HH", "HE", "MV", "NI",
+			"NW", "RP", "SL", "SN", "ST", "SH", "TH" };
 	private JComboBox<String> cb2 = new JComboBox<String>(cbs2);
-	private String[] cbs3 = { "2020", "2021", "2022", "2023", "2024", "2025" };
+	private String[] cbs3 = { "2020", "2021", "2022", "2023", "2024", "2025", "2026" };
 	private JComboBox<String> cb3 = new JComboBox<String>(cbs3);
-	private String[] cbs4 = { "2020", "2021", "2022", "2023", "2024", "2025" };
+	private String[] cbs4 = { "2020", "2021", "2022", "2023", "2024", "2025", "2026" };
 	private JComboBox<String> cb4 = new JComboBox<String>(cbs4);
 
 	private JButton b1 = new JButton();
@@ -44,6 +50,8 @@ public class FeiertageGUI extends JFrame {
 	private JButton b3 = new JButton();
 	private JButton b4 = new JButton();
 
+	String exportpfad = null;
+
 	public FeiertageGUI() {
 		this.setSize(720, 480);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -53,11 +61,17 @@ public class FeiertageGUI extends JFrame {
 		this.setLocation(
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2) - (int) (this.getWidth() / 2),
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2) - (int) (this.getHeight() / 2));
+		String pfad = System.getProperty("user.dir") + "\\" + "Daten" + "\\" + "Deutschland";
+		String pfadmd = System.getProperty("user.dir");
+
+		// Naechtest mal Ordner mit relativem pfad
 
 //		 Komponenten
 
 //		 NichtGUI
+		// Ruinen
 
+		// Read by line
 //		try {
 //			File myObj = new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\Suedtirol.txt");
 //			Scanner myReader = new Scanner(myObj);
@@ -70,38 +84,78 @@ public class FeiertageGUI extends JFrame {
 //			System.out.println("An error occurred.");
 //			e.printStackTrace();
 //		}
+		// create File
+//		try {
+//		File export = new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\export.txt");
+//		if (export.createNewFile()) {
+//			System.out.println("File created: " + export.getName());
+//		} else {
+//			System.out.println("File already exists.");
+//		}
+//	} catch (IOException e1) {
+//		e1.printStackTrace();
+//	}
+		// API
+//		for (int i = 2020; i < 2031; i++) {
+//			String s = "https://feiertage-api.de/api/?jahr=" + i + "&nur_land=" + beschreibung;
+//			try {
+//				ret.add(produceFromJSON(JsonReader.readJsonFromUrl(s)));
+//			} catch (JSONException | IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+		// Filechooser
+//		JFileChooser chooser = new JFileChooser();
+//		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+//		File file = chooser.getSelectedFile();
+//		String s = file.getAbsolutePath().replaceAll("\\\\", "\\\\\\\\");
 
-		File[] schweiz = { new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2020.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2021.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2022.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2023.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2024.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2025.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2026.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2027.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2028.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2029.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Schweiz\\2030.txt") };
+		File[] schweiz = { new File(pfadmd + "\\Daten\\Schweiz\\2020.txt"),
+				new File(pfadmd + "\\Daten\\Schweiz\\2021.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2022.txt"),
+				new File(pfadmd + "\\Daten\\Schweiz\\2023.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2024.txt"),
+				new File(pfadmd + "\\Daten\\Schweiz\\2025.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2026.txt"),
+				new File(pfadmd + "\\Daten\\Schweiz\\2027.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2028.txt"),
+				new File(pfadmd + "\\Daten\\Schweiz\\2029.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2030.txt") };
 
-		File[] suedtirol = { new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2020.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2021.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2022.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2023.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2024.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2025.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2026.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2027.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2028.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2029.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\2030.txt"), };
+		File[] suedtirol = { new File(pfadmd + "\\Daten\\Suedtirol\\2020.txt"),
+				new File(pfadmd + "\\Daten\\Suedtirol\\2021.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2022.txt"),
+				new File(pfadmd + "\\Daten\\Suedtirol\\2023.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2024.txt"),
+				new File(pfadmd + "\\Daten\\Suedtirol\\2025.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2026.txt"),
+				new File(pfadmd + "\\Daten\\Suedtirol\\2027.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2028.txt"),
+				new File(pfadmd + "\\Daten\\Suedtirol\\2029.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2030.txt"), };
 
-		File[] oesterreich = { new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2020.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2021.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2022.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2023.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2024.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2025.txt"),
-				new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Oesterreich\\2026.txt") };
+		File[] oesterreich = { new File(pfadmd + "\\Daten\\Oesterreich\\2020.txt"),
+				new File(pfadmd + "\\Daten\\Oesterreich\\2021.txt"),
+				new File(pfadmd + "\\Daten\\Oesterreich\\2022.txt"),
+				new File(pfadmd + "\\Daten\\Oesterreich\\2023.txt"),
+				new File(pfadmd + "\\Daten\\Oesterreich\\2024.txt"),
+				new File(pfadmd + "\\Daten\\Oesterreich\\2025.txt"),
+				new File(pfadmd + "\\Daten\\Oesterreich\\2026.txt") };
+		try {
+
+			for (int i = 0; i < schweiz.length; i++) {
+				if (schweiz[i].exists()) {
+				} else {
+					throw new FileNotFoundException("Schweiz an stelle" + i + " konnte nicht gefunden werden");
+				}
+			}
+
+			for (int i = 0; i < suedtirol.length; i++) {
+				if (suedtirol[i].exists()) {
+				} else {
+					throw new FileNotFoundException("Suedtirol an stelle" + i + " konnte nicht gefunden werden");
+				}
+			}
+
+			for (int i = 0; i < oesterreich.length; i++) {
+				if (oesterreich[i].exists()) {
+				} else {
+					throw new FileNotFoundException("Oesterreich an stelle" + i + " konnte nicht gefunden werden");
+				}
+			}
+		} catch (FileNotFoundException e34) {
+			System.out.println("Dicke DateiNichtGefundenAusnahme");
+		}
 
 		ArrayList<Ort> anfang = new ArrayList<Ort>();
 		Ort CH = new Ort("CH", aFabrik.produceFromString(schweiz));
@@ -130,22 +184,22 @@ public class FeiertageGUI extends JFrame {
 		ArrayList<ArrayList<feiertag>> sh = new ArrayList<ArrayList<feiertag>>();
 		ArrayList<ArrayList<feiertag>> th = new ArrayList<ArrayList<feiertag>>();
 
-		bw = aFabrik.fill("BW");
-		by = aFabrik.fill("BY");
-		be = aFabrik.fill("BE");
-		bb = aFabrik.fill("BB");
-		hb = aFabrik.fill("HB");
-		hh = aFabrik.fill("HH");
-		he = aFabrik.fill("HE");
-		mv = aFabrik.fill("MV");
-		ni = aFabrik.fill("NI");
-		nw = aFabrik.fill("NW");
-		rp = aFabrik.fill("RP");
-		sl = aFabrik.fill("SL");
-		sn = aFabrik.fill("SN");
-		st = aFabrik.fill("ST");
-		sh = aFabrik.fill("SH");
-		th = aFabrik.fill("TH");
+		bw = aFabrik.fill("BW", pfad);
+		by = aFabrik.fill("BY", pfad);
+		be = aFabrik.fill("BE", pfad);
+		bb = aFabrik.fill("BB", pfad);
+		hb = aFabrik.fill("HB", pfad);
+		hh = aFabrik.fill("HH", pfad);
+		he = aFabrik.fill("HE", pfad);
+		mv = aFabrik.fill("MV", pfad);
+		ni = aFabrik.fill("NI", pfad);
+		nw = aFabrik.fill("NW", pfad);
+		rp = aFabrik.fill("RP", pfad);
+		sl = aFabrik.fill("SL", pfad);
+		sn = aFabrik.fill("SN", pfad);
+		st = aFabrik.fill("ST", pfad);
+		sh = aFabrik.fill("SH", pfad);
+		th = aFabrik.fill("TH", pfad);
 
 		Ort BW = new Ort("DE-BW", bw);
 		anfang.add(BW);
@@ -202,6 +256,23 @@ public class FeiertageGUI extends JFrame {
 		// Auswahl
 		Font f = new Font("Comic Sans MS", Font.PLAIN, 15);
 
+		i1.setText("refresh from API");
+		i1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < bundeslaender.length; i++) {
+					aFabrik.refresh(bundeslaender[i], pfad);
+				}
+				
+			}
+		});
+
+		menu.add(i1);
+		menu.setText("Aktionen");
+		mb.add(menu);
+		this.setJMenuBar(mb);
+
 		l1.setBounds(10, 10, 120, 30);
 		l1.setText("Land:");
 		l1.setFont(f);
@@ -244,8 +315,9 @@ public class FeiertageGUI extends JFrame {
 		b1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Deutschland
-				if (cb1.getSelectedItem() == "DE") {
+				// Deutschland ohne Alles
+				if (cb1.getSelectedItem().equals("DE") && !cb2.getSelectedItem().equals("Alle")) {
+					System.out.println(!cb2.getSelectedItem().equals("Alles"));
 					int inanfang = -1;
 					for (int i = 0; i < anfang.size(); i++) {
 						if (anfang.get(i).getBeschreibung() == cb2.getSelectedItem()) {
@@ -276,8 +348,29 @@ public class FeiertageGUI extends JFrame {
 							}
 						}
 					}
+					// else vlt deutschland alle
+				} else if (cb1.getSelectedItem().equals("DE") && cb2.getSelectedItem().equals("Alle")) {
+					System.out.println("richtig");
+					for (int i = 0; i < anfang.size(); i++) {
+						if (anfang.get(i).getBeschreibung().substring(0, 2).equals("DE")) {
+							ende.add(anfang.get(i));
+							anfang.remove(i);
+							i = 0;
+						}
+					}
+					ta1.setText(tat);
+					ta1.append("Alle deutschen Bundeslaender wurden hinzugefügt!\n");
+					ta1.append("Mommentan beinhaltet die Liste:\n");
+					for (int i = 0; i < ende.size(); i++) {
+						ta1.append(ende.get(i).getBeschreibung() + " ");
+						if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+							ta1.append("\n");
+						}
+					}
+
 					// else Oesterreich/Schweiz/Suedtirol
 				} else {
+					System.out.println("falsch");
 					int inanfang = -1;
 					for (int i = 0; i < anfang.size(); i++) {
 						if (anfang.get(i).getBeschreibung() == cb1.getSelectedItem()) {
@@ -299,7 +392,7 @@ public class FeiertageGUI extends JFrame {
 						}
 					} else {
 						ta1.setText(tat);
-						ta1.append("Dieser ort befindet sich bereits in der Liste!");
+						ta1.append("Dieser Ort befindet sich bereits in der Liste!");
 						ta1.append("Mommentan beinhaltet die Liste:\n");
 						for (int i = 0; i < ende.size(); i++) {
 							ta1.append(ende.get(i).getBeschreibung() + " ");
@@ -361,18 +454,18 @@ public class FeiertageGUI extends JFrame {
 
 		// Operationen
 
-		l3.setBounds(10, 365, 120, 30);
+		l3.setBounds(10, 340, 120, 30);
 		l3.setText("Beginn:");
 		l3.setFont(f);
 		getContentPane().add(l3);
 
-		l4.setBounds(10, 405, 120, 30);
+		l4.setBounds(10, 380, 120, 30);
 		l4.setText("Ende:");
 		l4.setFont(f);
 		l4.setVisible(true);
 		getContentPane().add(l4);
 
-		cb3.setBounds(140, 365, 120, 30);
+		cb3.setBounds(140, 340, 120, 30);
 		cb3.setFont(f);
 		cb3.addActionListener(new ActionListener() {
 			@Override
@@ -385,7 +478,7 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(cb3);
 
-		cb4.setBounds(140, 405, 120, 30);
+		cb4.setBounds(140, 380, 120, 30);
 		cb4.setFont(f);
 		cb4.addActionListener(new ActionListener() {
 			@Override
@@ -398,14 +491,15 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(cb4);
 
-		// nicht fertig
-		b4.setBounds(580, 365, 120, 70);
+		b4.setBounds(580, 340, 120, 70);
 		b4.setText("EXPORT");
 		b4.setFont(f);
+		b4.setEnabled(false);
 		b4.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("B4 pressed");
 				// Schritt1:Feiertage getten
 				int cb3i = Integer.parseInt((String) cb3.getSelectedItem());
 				int cb4i = Integer.parseInt((String) cb4.getSelectedItem());
@@ -421,6 +515,7 @@ public class FeiertageGUI extends JFrame {
 									ende.get(j).getJahr20().get(i).get(k).getName());
 							// Kontrolle ob hinzuzufuegender Feiertag bereits existiert
 							// Kontrolle ob Array leer => wichtig dass anfaengt zu schreiben
+							System.out.println(temp.toString());
 							if (jahr.size() == 0 && ende.size() > 0) {
 								temp.addOrt(ende.get(j).getBeschreibung());
 								jahr.add(temp);
@@ -443,18 +538,8 @@ public class FeiertageGUI extends JFrame {
 					finale.add(jahr);
 				}
 
-				// Schritt2: gutes Format & export????
+				// Schritt2: gutes Format & export
 				// File
-//				try {
-//					File export = new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\export.txt");
-//					if (export.createNewFile()) {
-//						System.out.println("File created: " + export.getName());
-//					} else {
-//						System.out.println("File already exists.");
-//					}
-//				} catch (IOException e1) {
-//					e1.printStackTrace();
-//				}
 
 				ArrayList<String[]> finalfinal = new ArrayList<String[]>();
 
@@ -466,8 +551,7 @@ public class FeiertageGUI extends JFrame {
 					}
 				}
 
-				try (PrintWriter writer = new PrintWriter(
-						new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\export.csv"))) {
+				try (PrintWriter writer = new PrintWriter(new File(exportpfad + "\\export.csv"))) {
 
 					StringBuilder sb = new StringBuilder();
 					for (int i = 0; i < finalfinal.size(); i++) {
@@ -479,7 +563,6 @@ public class FeiertageGUI extends JFrame {
 
 					writer.write(sb.toString());
 
-
 				} catch (FileNotFoundException e3) {
 					e3.printStackTrace();
 				}
@@ -487,6 +570,38 @@ public class FeiertageGUI extends JFrame {
 			}
 		});
 		getContentPane().add(b4);
+
+		// Choose Export Filepath
+		Icon icon = new ImageIcon(pfadmd + "\\Daten\\zIcons\\folder.png");
+		Image img = ((ImageIcon) icon).getImage();
+		Image newimg = img.getScaledInstance(65, 65, java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newimg);
+		JButton b5 = new JButton(icon);
+		b5.setBounds(490, 340, 70, 70);
+		b5.setFont(f);
+		b5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				int rw = chooser.showOpenDialog(null);
+				File file = chooser.getSelectedFile();
+				if (rw == 0) {
+					setPfad(file.getAbsolutePath().replaceAll("\\\\", "\\\\\\\\"));
+					b4.setEnabled(true);
+				} else {
+					System.out.println("schreien");
+					b4.setEnabled(false);
+				}
+			}
+		});
+		getContentPane().add(b5);
+
+	}
+
+	public void setPfad(String s) {
+		exportpfad = s;
 	}
 
 }
