@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -15,8 +16,8 @@ import org.json.JSONObject;
 import java.io.*;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
+@SuppressWarnings("serial")
 public class FeiertageGUI extends JFrame {
 
 	private JMenu menu = new JMenu("");
@@ -33,8 +34,8 @@ public class FeiertageGUI extends JFrame {
 	private JComboBox<String> cb1 = new JComboBox<String>(cbs1);
 	private String[] cbs2 = { "Alle", "DE-BW", "DE-BY", "DE-BE", "DE-BB", "DE-HB", "DE-HH", "DE-HE", "DE-MV", "DE-NI",
 			"DE-NW", "DE-RP", "DE-SL", "DE-SN", "DE-ST", "DE-SH", "DE-TH" };
-	private String[] bundeslaender = { "BW", "BY", "BE", "BB", "HB", "HH", "HE", "MV", "NI",
-			"NW", "RP", "SL", "SN", "ST", "SH", "TH" };
+	private String[] bundeslaender = { "BW", "BY", "BE", "BB", "HB", "HH", "HE", "MV", "NI", "NW", "RP", "SL", "SN",
+			"ST", "SH", "TH" };
 	private JComboBox<String> cb2 = new JComboBox<String>(cbs2);
 	private String[] cbs3 = { "2020", "2021", "2022", "2023", "2024", "2025", "2026" };
 	private JComboBox<String> cb3 = new JComboBox<String>(cbs3);
@@ -51,6 +52,8 @@ public class FeiertageGUI extends JFrame {
 	private JButton b4 = new JButton();
 
 	String exportpfad = null;
+	String pfad = System.getProperty("user.dir") + "\\" + "Daten" + "\\" + "Deutschland";
+	String pfadmd = System.getProperty("user.dir");
 
 	public FeiertageGUI() {
 		this.setSize(720, 480);
@@ -61,8 +64,7 @@ public class FeiertageGUI extends JFrame {
 		this.setLocation(
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2) - (int) (this.getWidth() / 2),
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2) - (int) (this.getHeight() / 2));
-		String pfad = System.getProperty("user.dir") + "\\" + "Daten" + "\\" + "Deutschland";
-		String pfadmd = System.getProperty("user.dir");
+		
 
 		// Naechtest mal Ordner mit relativem pfad
 
@@ -109,53 +111,83 @@ public class FeiertageGUI extends JFrame {
 //		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 //		File file = chooser.getSelectedFile();
 //		String s = file.getAbsolutePath().replaceAll("\\\\", "\\\\\\\\");
+		File[] schweiz = null;
+		File[] suedtirol = null;
+		File[] oesterreich = null;
+		boolean dateifehler = false;
 
-		File[] schweiz = { new File(pfadmd + "\\Daten\\Schweiz\\2020.txt"),
-				new File(pfadmd + "\\Daten\\Schweiz\\2021.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2022.txt"),
-				new File(pfadmd + "\\Daten\\Schweiz\\2023.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2024.txt"),
-				new File(pfadmd + "\\Daten\\Schweiz\\2025.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2026.txt"),
-				new File(pfadmd + "\\Daten\\Schweiz\\2027.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2028.txt"),
-				new File(pfadmd + "\\Daten\\Schweiz\\2029.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2030.txt") };
-
-		File[] suedtirol = { new File(pfadmd + "\\Daten\\Suedtirol\\2020.txt"),
-				new File(pfadmd + "\\Daten\\Suedtirol\\2021.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2022.txt"),
-				new File(pfadmd + "\\Daten\\Suedtirol\\2023.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2024.txt"),
-				new File(pfadmd + "\\Daten\\Suedtirol\\2025.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2026.txt"),
-				new File(pfadmd + "\\Daten\\Suedtirol\\2027.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2028.txt"),
-				new File(pfadmd + "\\Daten\\Suedtirol\\2029.txt"), new File(pfadmd + "\\Daten\\Suedtirol\\2030.txt"), };
-
-		File[] oesterreich = { new File(pfadmd + "\\Daten\\Oesterreich\\2020.txt"),
-				new File(pfadmd + "\\Daten\\Oesterreich\\2021.txt"),
-				new File(pfadmd + "\\Daten\\Oesterreich\\2022.txt"),
-				new File(pfadmd + "\\Daten\\Oesterreich\\2023.txt"),
-				new File(pfadmd + "\\Daten\\Oesterreich\\2024.txt"),
-				new File(pfadmd + "\\Daten\\Oesterreich\\2025.txt"),
-				new File(pfadmd + "\\Daten\\Oesterreich\\2026.txt") };
-		try {
-
-			for (int i = 0; i < schweiz.length; i++) {
-				if (schweiz[i].exists()) {
-				} else {
-					throw new FileNotFoundException("Schweiz an stelle" + i + " konnte nicht gefunden werden");
+		do {
+			if(dateifehler) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				int rw = chooser.showOpenDialog(null);
+				File file = chooser.getSelectedFile();
+				if(rw==0) {
+					String s = file.getAbsolutePath();
+					int a = s.indexOf("Daten");
+					System.out.println(a);
+					s = s.substring(0,(a-1));
+					System.out.println(s);
+					pfadmd = s;
+					pfad = s + "\\" + "Daten" + "\\" + "Deutschland";
 				}
 			}
+			
+			dateifehler = false;
+			schweiz = new File[] { new File(pfadmd + "\\Daten\\Schweiz\\2020.txt"),
+					new File(pfadmd + "\\Daten\\Schweiz\\2021.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2022.txt"),
+					new File(pfadmd + "\\Daten\\Schweiz\\2023.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2024.txt"),
+					new File(pfadmd + "\\Daten\\Schweiz\\2025.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2026.txt"),
+					new File(pfadmd + "\\Daten\\Schweiz\\2027.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2028.txt"),
+					new File(pfadmd + "\\Daten\\Schweiz\\2029.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2030.txt") };
 
-			for (int i = 0; i < suedtirol.length; i++) {
-				if (suedtirol[i].exists()) {
-				} else {
-					throw new FileNotFoundException("Suedtirol an stelle" + i + " konnte nicht gefunden werden");
+			suedtirol = new File[] { new File(pfadmd + "\\Daten\\Suedtirol\\2020.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2021.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2022.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2023.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2024.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2025.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2026.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2027.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2028.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2029.txt"),
+					new File(pfadmd + "\\Daten\\Suedtirol\\2030.txt"), };
+
+			oesterreich = new File[] { new File(pfadmd + "\\Daten\\Oesterreich\\2020.txt"),
+					new File(pfadmd + "\\Daten\\Oesterreich\\2021.txt"),
+					new File(pfadmd + "\\Daten\\Oesterreich\\2022.txt"),
+					new File(pfadmd + "\\Daten\\Oesterreich\\2023.txt"),
+					new File(pfadmd + "\\Daten\\Oesterreich\\2024.txt"),
+					new File(pfadmd + "\\Daten\\Oesterreich\\2025.txt"),
+					new File(pfadmd + "\\Daten\\Oesterreich\\2026.txt") };
+			try {
+
+				for (int i = 0; i < schweiz.length; i++) {
+					if (schweiz[i].exists()) {
+					} else {
+						throw new FileNotFoundException("Schweiz an stelle" + i + " konnte nicht gefunden werden");
+					}
 				}
+
+				for (int i = 0; i < suedtirol.length; i++) {
+					if (suedtirol[i].exists()) {
+					} else {
+						throw new FileNotFoundException("Suedtirol an stelle" + i + " konnte nicht gefunden werden");
+					}
+				}
+
+				for (int i = 0; i < oesterreich.length; i++) {
+					if (oesterreich[i].exists()) {
+					} else {
+						throw new FileNotFoundException("Oesterreich an stelle" + i + " konnte nicht gefunden werden");
+					}
+				}
+			} catch (FileNotFoundException e34) {
+				System.out.println("Dicke DateiNichtGefundenAusnahme");
+				dateifehler = true;
 			}
 
-			for (int i = 0; i < oesterreich.length; i++) {
-				if (oesterreich[i].exists()) {
-				} else {
-					throw new FileNotFoundException("Oesterreich an stelle" + i + " konnte nicht gefunden werden");
-				}
-			}
-		} catch (FileNotFoundException e34) {
-			System.out.println("Dicke DateiNichtGefundenAusnahme");
-		}
+		} while (dateifehler);
 
 		ArrayList<Ort> anfang = new ArrayList<Ort>();
 		Ort CH = new Ort("CH", aFabrik.produceFromString(schweiz));
@@ -264,7 +296,7 @@ public class FeiertageGUI extends JFrame {
 				for (int i = 0; i < bundeslaender.length; i++) {
 					aFabrik.refresh(bundeslaender[i], pfad);
 				}
-				
+
 			}
 		});
 
@@ -538,6 +570,11 @@ public class FeiertageGUI extends JFrame {
 					finale.add(jahr);
 				}
 
+				// sort
+				for (int i = 0; i < finale.size(); i++) {
+					Collections.sort(finale.get(i));
+				}
+
 				// Schritt2: gutes Format & export
 				// File
 
@@ -583,8 +620,9 @@ public class FeiertageGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(ende.get(0).getJahr20().get(0).get(0).toString());
 				JFileChooser chooser = new JFileChooser();
-				chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				int rw = chooser.showOpenDialog(null);
 				File file = chooser.getSelectedFile();
 				if (rw == 0) {
