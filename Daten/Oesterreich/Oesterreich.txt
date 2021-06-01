@@ -1,0 +1,98 @@
+$2020
+01. Jan 2020 Neujahr
+06. Jan 2020 Heilige Drei Könige
+13. Apr 2020 Ostermontag
+01. Mai 2020 Staatsfeiertag
+21. Mai 2020 Christi Himmelfahrt
+01. Jun 2020 Pfingstmontag
+11. Jun 2020 Fronleichnam
+15. Aug 2020 Mariä Himmelfahrt
+26. Okt 2020 Nationalfeiertag
+01. Nov 2020 Allerheiligen
+08. Dez 2020 Mariä Empfängnis
+25. Dez 2020 Weihnachten
+26. Dez 2020 Stefanitag
+$2021
+01. Jan 2021 Neujahr
+06. Jan 2021 Heilige Drei Könige
+05. Apr 2021 Ostermontag
+01. Mai 2021 Staatsfeiertag
+13. Mai 2021 Christi Himmelfahrt
+24. Mai 2021 Pfingstmontag
+03. Jun 2021 Fronleichnam
+15. Aug 2021 Mariä Himmelfahrt
+26. Okt 2021 Nationalfeiertag
+01. Nov 2021 Allerheiligen
+08. Dez 2021 Mariä Empfängnis
+25. Dez 2021 Weihnachten
+26. Dez 2021 Stefanitag
+$2022
+01. Jan 2022 Neujahr
+06. Jan 2022 Heilige Drei Könige
+18. Apr 2022 Ostermontag
+01. Mai 2022 Staatsfeiertag
+26. Mai 2022 Christi Himmelfahrt
+06. Jun 2022 Pfingstmontag
+16. Jun 2022 Fronleichnam
+15. Aug 2022 Mariä Himmelfahrt
+26. Okt 2022 Nationalfeiertag
+01. Nov 2022 Allerheiligen
+08. Dez 2022 Mariä Empfängnis
+25. Dez 2022 Weihnachten
+26. Dez 2022 Stefanitag
+$2023
+01. Jan 2023 Neujahr
+06. Jan 2023 Heilige Drei Könige
+10. Apr 2023 Ostermontag
+01. Mai 2023 Staatsfeiertag
+18. Mai 2023 Christi Himmelfahrt
+29. Mai 2023 Pfingstmontag
+08. Jun 2023 Fronleichnam
+15. Aug 2023 Mariä Himmelfahrt
+26. Okt 2023 Nationalfeiertag
+01. Nov 2023 Allerheiligen
+08. Dez 2023 Mariä Empfängnis
+25. Dez 2023 Weihnachten
+26. Dez 2023 Stefanitag
+$2024
+01. Jan 2024 Neujahr
+06. Jan 2024 Heilige Drei Könige
+01. Apr 2024 Ostermontag
+01. Mai 2024 Staatsfeiertag
+09. Mai 2024 Christi Himmelfahrt
+20. Mai 2024 Pfingstmontag
+30. Mai 2024 Fronleichnam
+15. Aug 2024 Mariä Himmelfahrt
+26. Okt 2024 Nationalfeiertag
+01. Nov 2024 Allerheiligen
+08. Dez 2024 Mariä Empfängnis
+25. Dez 2024 Weihnachten
+26. Dez 2024 Stefanitag
+$2025
+01. Jan 2025 Neujahr
+06. Jan 2025 Heilige Drei Könige
+21. Apr 2025 Ostermontag
+01. Mai 2025 Staatsfeiertag
+29. Mai 2025 Christi Himmelfahrt
+09. Jun 2025 Pfingstmontag
+19. Jun 2025 Fronleichnam
+15. Aug 2025 Mariä Himmelfahrt
+26. Okt 2025 Nationalfeiertag
+01. Nov 2025 Allerheiligen
+08. Dez 2025 Mariä Empfängnis
+25. Dez 2025 Weihnachten
+26. Dez 2025 Stefanitag
+$2026
+01. Jan 2026 Neujahr
+06. Jan 2026 Heilige Drei Könige
+06. Apr 2026 Ostermontag
+01. Mai 2026 Staatsfeiertag
+14. Mai 2026 Christi Himmelfahrt
+25. Mai 2026 Pfingstmontag
+04. Jun 2026 Fronleichnam
+15. Aug 2026 Mariä Himmelfahrt
+26. Okt 2026 Nationalfeiertag
+01. Nov 2026 Allerheiligen
+08. Dez 2026 Mariä Empfängnis
+25. Dez 2026 Weihnachten
+26. Dez 2026 Stefanitag

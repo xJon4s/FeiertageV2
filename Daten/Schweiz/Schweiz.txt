@@ -1,0 +1,110 @@
+$2020
+01. Jan 2020 Neujahr
+10. Apr 2020 Karfreitag
+13. Apr 2020 Ostermontag
+21. Mai 2020 Auffahrt
+01. Jun 2020 Pfingstmontag
+01. Aug 2020 Nationalfeiertag
+20. Sep 2020 Eidg. Dank-, Buss- und Bettag
+25. Dez 2020 Weihnachten
+26. Dez 2020 Stephanstag
+$2021
+01. Jan 2021 Neujahr
+02. Apr 2021 Karfreitag
+05. Apr 2021 Ostermontag
+13. Mai 2021 Auffahrt
+24. Mai 2021 Pfingstmontag
+01. Aug 2021 Nationalfeiertag
+19. Sep 2021 Eidg. Dank-, Buss- und Bettag
+25. Dez 2021 Weihnachten
+26. Dez 2021 Stephanstag
+$2022
+01. Jan 2022 Neujahr
+15. Apr 2022 Karfreitag
+18. Apr 2022 Ostermontag
+26. Mai 2022 Auffahrt
+06. Jun 2022 Pfingstmontag
+01. Aug 2022 Nationalfeiertag
+18. Sep 2022 Eidg. Dank-, Buss- und Bettag
+25. Dez 2022 Weihnachten
+26. Dez 2022 Stephanstag
+$2023
+01. Jan 2023 Neujahr
+07. Apr 2023 Karfreitag
+10. Apr 2023 Ostermontag
+18. Mai 2023 Auffahrt
+29. Mai 2023 Pfingstmontag
+01. Aug 2023 Nationalfeiertag
+17. Sep 2023 Eidg. Dank-, Buss- und Bettag
+25. Dez 2023 Weihnachten
+26. Dez 2023 Stephanstag
+$2024
+01. Jan 2024 Neujahr
+29. Mär 2024 Karfreitag
+01. Apr 2024 Ostermontag
+09. Mai 2024 Auffahrt
+20. Mai 2024 Pfingstmontag
+01. Aug 2024 Nationalfeiertag
+15. Sep 2024 Eidg. Dank-, Buss- und Bettag
+25. Dez 2024 Weihnachten
+26. Dez 2024 Stephanstag
+$2025
+01. Jan 2025 Neujahr
+18. Apr 2025 Karfreitag
+21. Apr 2025 Ostermontag
+29. Mai 2025 Auffahrt
+09. Jun 2025 Pfingstmontag
+01. Aug 2025 Nationalfeiertag
+21. Sep 2025 Eidg. Dank-, Buss- und Bettag
+25. Dez 2025 Weihnachten
+26. Dez 2025 Stephanstag
+$2026
+01. Jan 2026 Neujahr
+03. Apr 2026 Karfreitag
+06. Apr 2026 Ostermontag
+14. Mai 2026 Auffahrt
+25. Mai 2026 Pfingstmontag
+01. Aug 2026 Nationalfeiertag
+20. Sep 2026 Eidg. Dank-, Buss- und Bettag
+25. Dez 2026 Weihnachten
+26. Dez 2026 Stephanstag
+$2027
+01. Jan 2027 Neujahr
+26. Mär 2027 Karfreitag
+29. Mär 2027 Ostermontag
+06. Mai 2027 Auffahrt
+17. Mai 2027 Pfingstmontag
+01. Aug 2027 Nationalfeiertag
+19. Sep 2027 Eidg. Dank-, Buss- und Bettag
+25. Dez 2027 Weihnachten
+26. Dez 2027 Stephanstag
+$2028
+01. Jan 2028 Neujahr
+14. Apr 2028 Karfreitag
+17. Apr 2028 Ostermontag
+25. Mai 2028 Auffahrt
+05. Jun 2028 Pfingstmontag
+01. Aug 2028 Nationalfeiertag
+17. Sep 2028 Eidg. Dank-, Buss- und Bettag
+25. Dez 2028 Weihnachten
+26. Dez 2028 Stephanstag
+$2029
+01. Jan 2029 Neujahr
+30. Mär 2029 Karfreitag
+02. Apr 2029 Ostermontag
+10. Mai 2029 Auffahrt
+21. Mai 2029 Pfingstmontag
+01. Aug 2029 Nationalfeiertag
+16. Sep 2029 Eidg. Dank-, Buss- und Bettag
+25. Dez 2029 Weihnachten
+26. Dez 2029 Stephanstag
+$2030
+01. Jan 2030 Neujahr
+19. Apr 2030 Karfreitag
+22. Apr 2030 Ostermontag
+30. Mai 2030 Auffahrt
+10. Jun 2030 Pfingstmontag
+01. Aug 2030 Nationalfeiertag
+15. Sep 2030 Eidg. Dank-, Buss- und Bettag
+25. Dez 2030 Weihnachten
+26. Dez 2030 Stephanstag

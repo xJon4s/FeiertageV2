@@ -1,0 +1,154 @@
+$2020
+01. Jan 2020 Neujahrstag
+06. Jan 2020 Heilige Drei Könige
+12. Apr 2020 Ostersonntag
+13. Apr 2020 Ostermontag
+25. Apr 2020 Tag der Befreiung Italiens
+01. Mai 2020 Tag der Arbeit
+01. Jun 2020 Pfingstmontag
+02. Jun 2020 Tag der Republik Italien
+15. Aug 2020 Mariä Himmelfahrt
+01. Nov 2020 Allerheiligen
+08. Dez 2020 Mariä Empfängnis
+25. Dez 2020 Weihnachten
+26. Dez 2020 Stephanstag
+$2021
+01. Jan 2021 Neujahrstag
+06. Jan 2021 Heilige Drei Könige
+04. Apr 2021 Ostersonntag
+05. Apr 2021 Ostermontag
+25. Apr 2021 Tag der Befreiung Italiens
+01. Mai 2021 Tag der Arbeit
+24. Mai 2021 Pfingstmontag
+02. Jun 2021 Tag der Republik Italien
+15. Aug 2021 Mariä Himmelfahrt
+01. Nov 2021 Allerheiligen
+08. Dez 2021 Mariä Empfängnis
+25. Dez 2021 Weihnachten
+26. Dez 2021 Stephanstag
+$2022
+01. Jan 2022 Neujahrstag
+06. Jan 2022 Heilige Drei Könige
+17. Apr 2022 Ostersonntag
+18. Apr 2022 Ostermontag
+25. Apr 2022 Tag der Befreiung Italiens
+01. Mai 2022 Tag der Arbeit
+02. Jun 2022 Tag der Republik Italien
+06. Jun 2022 Pfingstmontag
+15. Aug 2022 Mariä Himmelfahrt
+01. Nov 2022 Allerheiligen
+08. Dez 2022 Mariä Empfängnis
+25. Dez 2022 Weihnachten
+26. Dez 2022 Stephanstag
+$2023
+01. Jan 2023 Neujahrstag
+06. Jan 2023 Heilige Drei Könige
+09. Apr 2023 Ostersonntag
+10. Apr 2023 Ostermontag
+25. Apr 2023 Tag der Befreiung Italiens
+01. Mai 2023 Tag der Arbeit
+29. Mai 2023 Pfingstmontag
+02. Jun 2023 Tag der Republik Italien
+15. Aug 2023 Mariä Himmelfahrt
+01. Nov 2023 Allerheiligen
+08. Dez 2023 Mariä Empfängnis
+25. Dez 2023 Weihnachten
+26. Dez 2023 Stephanstag
+$2024
+01. Jan 2024 Neujahrstag
+06. Jan 2024 Heilige Drei Könige
+31. Mär 2024 Ostersonntag
+01. Apr 2024 Ostermontag
+25. Apr 2024 Tag der Befreiung Italiens
+01. Mai 2024 Tag der Arbeit
+20. Mai 2024 Pfingstmontag
+02. Jun 2024 Tag der Republik Italien
+15. Aug 2024 Mariä Himmelfahrt
+01. Nov 2024 Allerheiligen
+08. Dez 2024 Mariä Empfängnis
+25. Dez 2024 Weihnachten
+26. Dez 2024 Stephanstag
+$2025
+01. Jan 2025 Neujahrstag
+06. Jan 2025 Heilige Drei Könige
+20. Apr 2025 Ostersonntag
+21. Apr 2025 Ostermontag
+25. Apr 2025 Tag der Befreiung Italiens
+01. Mai 2025 Tag der Arbeit
+02. Jun 2025 Tag der Republik Italien
+09. Jun 2025 Pfingstmontag
+15. Aug 2025 Mariä Himmelfahrt
+01. Nov 2025 Allerheiligen
+08. Dez 2025 Mariä Empfängnis
+25. Dez 2025 Weihnachten
+26. Dez 2025 Stephanstag
+$2026
+01. Jan 2026 Neujahrstag
+06. Jan 2026 Heilige Drei Könige
+05. Apr 2026 Ostersonntag
+06. Apr 2026 Ostermontag
+25. Apr 2026 Tag der Befreiung Italiens
+01. Mai 2026 Tag der Arbeit
+25. Mai 2026 Pfingstmontag
+02. Jun 2026 Tag der Republik Italien
+15. Aug 2026 Mariä Himmelfahrt
+01. Nov 2026 Allerheiligen
+08. Dez 2026 Mariä Empfängnis
+25. Dez 2026 Weihnachten
+26. Dez 2026 Stephanstag
+$2027
+01. Jan 2027 Neujahrstag
+06. Jan 2027 Heilige Drei Könige
+28. Mär 2027 Ostersonntag
+29. Mär 2027 Ostermontag
+25. Apr 2027 Tag der Befreiung Italiens
+01. Mai 2027 Tag der Arbeit
+17. Mai 2027 Pfingstmontag
+02. Jun 2027 Tag der Republik Italien
+15. Aug 2027 Mariä Himmelfahrt
+01. Nov 2027 Allerheiligen
+08. Dez 2027 Mariä Empfängnis
+25. Dez 2027 Weihnachten
+26. Dez 2027 Stephanstag
+$2028
+01. Jan 2028 Neujahrstag
+06. Jan 2028 Heilige Drei Könige
+16. Apr 2028 Ostersonntag
+17. Apr 2028 Ostermontag
+25. Apr 2028 Tag der Befreiung Italiens
+01. Mai 2028 Tag der Arbeit
+02. Jun 2028 Tag der Republik Italien
+05. Jun 2028 Pfingstmontag
+15. Aug 2028 Mariä Himmelfahrt
+01. Nov 2028 Allerheiligen
+08. Dez 2028 Mariä Empfängnis
+25. Dez 2028 Weihnachten
+26. Dez 2028 Stephanstag
+$2029
+01. Jan 2029 Neujahrstag
+06. Jan 2029 Heilige Drei Könige
+01. Apr 2029 Ostersonntag
+02. Apr 2029 Ostermontag
+25. Apr 2029 Tag der Befreiung Italiens
+01. Mai 2029 Tag der Arbeit
+21. Mai 2029 Pfingstmontag
+02. Jun 2029 Tag der Republik Italien
+15. Aug 2029 Mariä Himmelfahrt
+01. Nov 2029 Allerheiligen
+08. Dez 2029 Mariä Empfängnis
+25. Dez 2029 Weihnachten
+26. Dez 2029 Stephanstag
+$2030
+01. Jan 2030 Neujahrstag
+06. Jan 2030 Heilige Drei Könige
+21. Apr 2030 Ostersonntag
+22. Apr 2030 Ostermontag
+25. Apr 2030 Tag der Befreiung Italiens
+01. Mai 2030 Tag der Arbeit
+02. Jun 2030 Tag der Republik Italien
+10. Jun 2030 Pfingstmontag
+15. Aug 2030 Mariä Himmelfahrt
+01. Nov 2030 Allerheiligen
+08. Dez 2030 Mariä Empfängnis
+25. Dez 2030 Weihnachten
+26. Dez 2030 Stephanstag
