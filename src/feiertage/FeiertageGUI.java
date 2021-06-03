@@ -6,17 +6,13 @@ import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.Scanner;
 
 import javax.swing.*;
 
-import org.json.JSONObject;
-
 import java.io.*;
 
-import org.json.JSONException;
 
+//Wirde nicht serialisiert
 @SuppressWarnings("serial")
 public class FeiertageGUI extends JFrame {
 
@@ -64,53 +60,7 @@ public class FeiertageGUI extends JFrame {
 		this.setLocation(
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2) - (int) (this.getWidth() / 2),
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2) - (int) (this.getHeight() / 2));
-		
 
-		// Naechtest mal Ordner mit relativem pfad
-
-//		 Komponenten
-
-//		 NichtGUI
-		// Ruinen
-
-		// Read by line
-//		try {
-//			File myObj = new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\Suedtirol\\Suedtirol.txt");
-//			Scanner myReader = new Scanner(myObj);
-//			while (myReader.hasNextLine()) {
-//				String data = myReader.nextLine();
-//				System.out.println(data);
-//			}
-//			myReader.close();
-//		} catch (FileNotFoundException e) {
-//			System.out.println("An error occurred.");
-//			e.printStackTrace();
-//		}
-		// create File
-//		try {
-//		File export = new File("C:\\Users\\PP_divus2\\Documents\\Feiertage\\Daten\\export.txt");
-//		if (export.createNewFile()) {
-//			System.out.println("File created: " + export.getName());
-//		} else {
-//			System.out.println("File already exists.");
-//		}
-//	} catch (IOException e1) {
-//		e1.printStackTrace();
-//	}
-		// API
-//		for (int i = 2020; i < 2031; i++) {
-//			String s = "https://feiertage-api.de/api/?jahr=" + i + "&nur_land=" + beschreibung;
-//			try {
-//				ret.add(produceFromJSON(JsonReader.readJsonFromUrl(s)));
-//			} catch (JSONException | IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-		// Filechooser
-//		JFileChooser chooser = new JFileChooser();
-//		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//		File file = chooser.getSelectedFile();
-//		String s = file.getAbsolutePath().replaceAll("\\\\", "\\\\\\\\");
 		File[] schweiz = null;
 		File[] suedtirol = null;
 		File[] oesterreich = null;
@@ -125,9 +75,7 @@ public class FeiertageGUI extends JFrame {
 				if(rw==0) {
 					String s = file.getAbsolutePath();
 					int a = s.indexOf("Daten");
-					System.out.println(a);
 					s = s.substring(0,(a-1));
-					System.out.println(s);
 					pfadmd = s;
 					pfad = s + "\\" + "Daten" + "\\" + "Deutschland";
 				}
@@ -182,8 +130,8 @@ public class FeiertageGUI extends JFrame {
 						throw new FileNotFoundException("Oesterreich an stelle" + i + " konnte nicht gefunden werden");
 					}
 				}
-			} catch (FileNotFoundException e34) {
-				System.out.println("Dicke DateiNichtGefundenAusnahme");
+			} catch (FileNotFoundException e33) {
+				e33.printStackTrace();
 				dateifehler = true;
 			}
 
@@ -349,7 +297,6 @@ public class FeiertageGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Deutschland ohne Alles
 				if (cb1.getSelectedItem().equals("DE") && !cb2.getSelectedItem().equals("Alle")) {
-					System.out.println(!cb2.getSelectedItem().equals("Alles"));
 					int inanfang = -1;
 					for (int i = 0; i < anfang.size(); i++) {
 						if (anfang.get(i).getBeschreibung() == cb2.getSelectedItem()) {
@@ -382,7 +329,6 @@ public class FeiertageGUI extends JFrame {
 					}
 					// else vlt deutschland alle
 				} else if (cb1.getSelectedItem().equals("DE") && cb2.getSelectedItem().equals("Alle")) {
-					System.out.println("richtig");
 					for (int i = 0; i < anfang.size(); i++) {
 						if (anfang.get(i).getBeschreibung().substring(0, 2).equals("DE")) {
 							ende.add(anfang.get(i));
@@ -402,7 +348,6 @@ public class FeiertageGUI extends JFrame {
 
 					// else Oesterreich/Schweiz/Suedtirol
 				} else {
-					System.out.println("falsch");
 					int inanfang = -1;
 					for (int i = 0; i < anfang.size(); i++) {
 						if (anfang.get(i).getBeschreibung() == cb1.getSelectedItem()) {
@@ -531,7 +476,6 @@ public class FeiertageGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("B4 pressed");
 				// Schritt1:Feiertage getten
 				int cb3i = Integer.parseInt((String) cb3.getSelectedItem());
 				int cb4i = Integer.parseInt((String) cb4.getSelectedItem());
@@ -547,7 +491,6 @@ public class FeiertageGUI extends JFrame {
 									ende.get(j).getJahr20().get(i).get(k).getName());
 							// Kontrolle ob hinzuzufuegender Feiertag bereits existiert
 							// Kontrolle ob Array leer => wichtig dass anfaengt zu schreiben
-							System.out.println(temp.toString());
 							if (jahr.size() == 0 && ende.size() > 0) {
 								temp.addOrt(ende.get(j).getBeschreibung());
 								jahr.add(temp);
@@ -620,16 +563,24 @@ public class FeiertageGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(ende.get(0).getJahr20().get(0).get(0).toString());
 				JFileChooser chooser = new JFileChooser();
 				chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				int rw = chooser.showOpenDialog(null);
 				File file = chooser.getSelectedFile();
 				if (rw == 0) {
+					String s = file.getAbsolutePath();
 					setPfad(file.getAbsolutePath().replaceAll("\\\\", "\\\\\\\\"));
 					b4.setEnabled(true);
+					tat = tat + "Der Pfad wurde auf \"" + s + "\" gesetzt\n";
+					ta1.setText(tat);
+					ta1.append("Mommentan beinhaltet die Liste:\n");
+					for (int i = 0; i < ende.size(); i++) {
+						ta1.append(ende.get(i).getBeschreibung() + " ");
+						if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+							ta1.append("\n");
+						}
+					}
 				} else {
-					System.out.println("schreien");
 					b4.setEnabled(false);
 				}
 			}

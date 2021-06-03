@@ -7,12 +7,6 @@ public class feiertag implements Comparable<feiertag>{
 	private String name = null;
 	private ArrayList<String> beschreibung = new ArrayList<String>();
 
-//	public feiertag(String datum, String name, String beschreibung) {
-//		this.datum = datum;
-//		this.name = name;
-//		this.beschreibung = beschreibung;
-//	}
-
 	public feiertag(String datum, String name) {
 		this.datum = datum;
 		this.name = name;
@@ -81,13 +75,6 @@ public class feiertag implements Comparable<feiertag>{
 				ret = -1;
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
 		return ret;
 	}
 

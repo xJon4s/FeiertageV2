@@ -25,7 +25,6 @@ public class aFabrik {
 				}
 				myReader.close();
 			} catch (FileNotFoundException e) {
-				System.out.println("An error occurred.");
 				e.printStackTrace();
 			}
 			ret.add(temp);
@@ -188,8 +187,6 @@ public class aFabrik {
 						StringBuilder sb = new StringBuilder();
 						sb.append(JsonReader.readJsonFromUrl(s)).toString();
 						writer.write(sb.toString());
-						System.out.println(beschreibung + ":" + i);
-						System.out.println(sb.toString());
 
 					} catch (FileNotFoundException e3) {
 						e3.printStackTrace();
