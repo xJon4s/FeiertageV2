@@ -3,7 +3,7 @@ package feiertage;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,7 +11,7 @@ import javax.swing.*;
 
 import java.io.*;
 
-//Wirde nicht serialisiert
+//Does not get serialized
 @SuppressWarnings("serial")
 public class FeiertageGUI extends JFrame {
 
@@ -47,11 +47,12 @@ public class FeiertageGUI extends JFrame {
 	private JButton b4 = new JButton();
 	private JButton b5 = null;
 
-	String exportpfad = null;
+	String exportpath = null;
 	String pfad = System.getProperty("user.dir") + "\\" + "Daten" + "\\" + "Deutschland";
 	String pfadmd = System.getProperty("user.dir");
 
 	public FeiertageGUI() {
+		//GUI
 		this.setSize(720, 480);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
@@ -64,10 +65,12 @@ public class FeiertageGUI extends JFrame {
 		File[] schweiz = null;
 		File[] suedtirol = null;
 		File[] oesterreich = null;
-		boolean dateifehler = false;
+		boolean dataerror = false;
 
+		//programmstart
 		do {
-			if (dateifehler) {
+			//if an error during filereading occured
+			if (dataerror) {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				int rw = chooser.showOpenDialog(null);
@@ -80,8 +83,8 @@ public class FeiertageGUI extends JFrame {
 					pfad = s + "\\" + "Daten" + "\\" + "Deutschland";
 				}
 			}
-
-			dateifehler = false;
+			//try reading files
+			dataerror = false;
 			schweiz = new File[] { new File(pfadmd + "\\Daten\\Schweiz\\2020.txt"),
 					new File(pfadmd + "\\Daten\\Schweiz\\2021.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2022.txt"),
 					new File(pfadmd + "\\Daten\\Schweiz\\2023.txt"), new File(pfadmd + "\\Daten\\Schweiz\\2024.txt"),
@@ -108,6 +111,7 @@ public class FeiertageGUI extends JFrame {
 					new File(pfadmd + "\\Daten\\Oesterreich\\2024.txt"),
 					new File(pfadmd + "\\Daten\\Oesterreich\\2025.txt"),
 					new File(pfadmd + "\\Daten\\Oesterreich\\2026.txt") };
+			//check if files are there
 			try {
 
 				for (int i = 0; i < schweiz.length; i++) {
@@ -132,117 +136,129 @@ public class FeiertageGUI extends JFrame {
 				}
 			} catch (FileNotFoundException e33) {
 				e33.printStackTrace();
-				dateifehler = true;
+				dataerror = true;
 			}
+			//reapeat if error occured
+		} while (dataerror);
 
-		} while (dateifehler);
+		ArrayList<Ort> possiblePlaces = new ArrayList<Ort>();
+		Ort CH = new Ort("CH", FeiertageFactory.produceFromString(schweiz));
+		possiblePlaces.add(CH);
 
-		ArrayList<Ort> anfang = new ArrayList<Ort>();
-		Ort CH = new Ort("CH", aFabrik.produceFromString(schweiz));
-		anfang.add(CH);
+		Ort BZ = new Ort("IT-BZ", FeiertageFactory.produceFromString(suedtirol));
+		possiblePlaces.add(BZ);
 
-		Ort BZ = new Ort("IT-BZ", aFabrik.produceFromString(suedtirol));
-		anfang.add(BZ);
+		Ort AT = new Ort("AT", FeiertageFactory.produceFromString(oesterreich));
+		possiblePlaces.add(AT);
 
-		Ort AT = new Ort("AT", aFabrik.produceFromString(oesterreich));
-		anfang.add(AT);
+		ArrayList<ArrayList<Feiertag>> bw = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> by = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> be = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> bb = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> hb = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> hh = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> he = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> mv = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> ni = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> nw = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> rp = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> sl = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> sn = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> st = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> sh = new ArrayList<ArrayList<Feiertag>>();
+		ArrayList<ArrayList<Feiertag>> th = new ArrayList<ArrayList<Feiertag>>();
 
-		ArrayList<ArrayList<feiertag>> bw = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> by = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> be = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> bb = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> hb = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> hh = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> he = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> mv = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> ni = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> nw = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> rp = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> sl = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> sn = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> st = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> sh = new ArrayList<ArrayList<feiertag>>();
-		ArrayList<ArrayList<feiertag>> th = new ArrayList<ArrayList<feiertag>>();
-
-		bw = aFabrik.fill("BW", pfad);
-		by = aFabrik.fill("BY", pfad);
-		be = aFabrik.fill("BE", pfad);
-		bb = aFabrik.fill("BB", pfad);
-		hb = aFabrik.fill("HB", pfad);
-		hh = aFabrik.fill("HH", pfad);
-		he = aFabrik.fill("HE", pfad);
-		mv = aFabrik.fill("MV", pfad);
-		ni = aFabrik.fill("NI", pfad);
-		nw = aFabrik.fill("NW", pfad);
-		rp = aFabrik.fill("RP", pfad);
-		sl = aFabrik.fill("SL", pfad);
-		sn = aFabrik.fill("SN", pfad);
-		st = aFabrik.fill("ST", pfad);
-		sh = aFabrik.fill("SH", pfad);
-		th = aFabrik.fill("TH", pfad);
-
+		try {
+		bw = FeiertageFactory.fill("BW", pfad);
+		by = FeiertageFactory.fill("BY", pfad);
+		be = FeiertageFactory.fill("BE", pfad);
+		bb = FeiertageFactory.fill("BB", pfad);
+		hb = FeiertageFactory.fill("HB", pfad);
+		hh = FeiertageFactory.fill("HH", pfad);
+		he = FeiertageFactory.fill("HE", pfad);
+		mv = FeiertageFactory.fill("MV", pfad);
+		ni = FeiertageFactory.fill("NI", pfad);
+		nw = FeiertageFactory.fill("NW", pfad);
+		rp = FeiertageFactory.fill("RP", pfad);
+		sl = FeiertageFactory.fill("SL", pfad);
+		sn = FeiertageFactory.fill("SN", pfad);
+		st = FeiertageFactory.fill("ST", pfad);
+		sh = FeiertageFactory.fill("SH", pfad);
+		th = FeiertageFactory.fill("TH", pfad);
+		}catch(NoConnectionException e) {
+			JOptionPane.showMessageDialog(FeiertageGUI.this,
+					"You have to be connected to start this programm without complete data", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			FeiertageGUI.this.dispatchEvent(new WindowEvent(FeiertageGUI.this, WindowEvent.WINDOW_CLOSING));
+		}
 		Ort BW = new Ort("DE-BW", bw);
-		anfang.add(BW);
+		possiblePlaces.add(BW);
 
 		Ort BY = new Ort("DE-BY", by);
-		anfang.add(BY);
+		possiblePlaces.add(BY);
 
 		Ort BE = new Ort("DE-BE", be);
-		anfang.add(BE);
+		possiblePlaces.add(BE);
 
 		Ort BB = new Ort("DE-BB", bb);
-		anfang.add(BB);
+		possiblePlaces.add(BB);
 
 		Ort HB = new Ort("DE-HB", hb);
-		anfang.add(HB);
+		possiblePlaces.add(HB);
 
 		Ort HH = new Ort("DE-HH", hh);
-		anfang.add(HH);
+		possiblePlaces.add(HH);
 
 		Ort HE = new Ort("DE-HE", he);
-		anfang.add(HE);
+		possiblePlaces.add(HE);
 
 		Ort MV = new Ort("DE-MV", mv);
-		anfang.add(MV);
+		possiblePlaces.add(MV);
 
 		Ort NI = new Ort("DE-NI", ni);
-		anfang.add(NI);
+		possiblePlaces.add(NI);
 
 		Ort NW = new Ort("DE-NW", nw);
-		anfang.add(NW);
+		possiblePlaces.add(NW);
 
 		Ort RP = new Ort("DE-RP", rp);
-		anfang.add(RP);
+		possiblePlaces.add(RP);
 
 		Ort SL = new Ort("DE-SL", sl);
-		anfang.add(SL);
+		possiblePlaces.add(SL);
 
 		Ort SN = new Ort("DE-SN", sn);
-		anfang.add(SN);
+		possiblePlaces.add(SN);
 
 		Ort ST = new Ort("DE-ST", st);
-		anfang.add(ST);
+		possiblePlaces.add(ST);
 
 		Ort SH = new Ort("DE-SH", sh);
-		anfang.add(SH);
+		possiblePlaces.add(SH);
 
 		Ort TH = new Ort("DE-TH", th);
-		anfang.add(TH);
+		possiblePlaces.add(TH);
 
-		ArrayList<Ort> ende = new ArrayList<Ort>();
+		ArrayList<Ort> effectivePlaces = new ArrayList<Ort>();
 
-		// GUI
-
-		// Auswahl
+		// GUI-Components
+		// Select
 		Font f = new Font("Comic Sans MS", Font.PLAIN, 15);
 
+		//refresh Json Data from API in MenuBar
 		i1.setText("refresh from API");
 		i1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try {
 				for (int i = 0; i < bundeslaender.length; i++) {
-					aFabrik.refresh(bundeslaender[i], pfad);
+					FeiertageFactory.refresh(bundeslaender[i], pfad);
+				}
+				}catch(NoConnectionException e2) {
+					JOptionPane.showMessageDialog(FeiertageGUI.this,
+							"You have to be connected to the internet to perform this action", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
@@ -264,6 +280,7 @@ public class FeiertageGUI extends JFrame {
 		l2.setVisible(true);
 		getContentPane().add(l2);
 
+		//Select place
 		cb1.setBounds(130, 10, 120, 30);
 		cb1.setFont(f);
 		cb1.addActionListener(new ActionListener() {
@@ -283,97 +300,106 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(cb1);
 
+		//Select bundesland if deutschland is choosen
 		cb2.setBounds(130, 50, 120, 30);
 		cb2.setFont(f);
 		cb2.setVisible(true);
 		cb2.setEnabled(true);
 		getContentPane().add(cb2);
 
+		//Adding button
 		b1.setBounds(260, 10, 110, 70);
 		b1.setText("ADD");
 		b1.setFont(f);
 		b1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Deutschland ohne Alles
+				// Only one Bundesland
 				if (cb1.getSelectedItem().equals("DE") && !cb2.getSelectedItem().equals("Alle")) {
+					//check if Bundesland is added
 					int inanfang = -1;
-					for (int i = 0; i < anfang.size(); i++) {
-						if (anfang.get(i).getBeschreibung() == cb2.getSelectedItem()) {
+					for (int i = 0; i < possiblePlaces.size(); i++) {
+						if (possiblePlaces.get(i).getBeschreibung() == cb2.getSelectedItem()) {
 							inanfang = i;
 						}
 					}
+					//add Bundesland
 					if (inanfang >= 0) {
-						Ort temp = anfang.get(inanfang);
-						ende.add(temp);
-						anfang.remove(temp);
+						Ort temp = possiblePlaces.get(inanfang);
+						effectivePlaces.add(temp);
+						possiblePlaces.remove(temp);
 						tat = tat + "Ort hinzugefuegt:" + temp.getBeschreibung() + "\n";
 						ta1.setText(tat);
 						ta1.append("Mommentan beinhaltet die Liste:\n");
-						for (int i = 0; i < ende.size(); i++) {
-							ta1.append(ende.get(i).getBeschreibung() + " ");
-							if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+						for (int i = 0; i < effectivePlaces.size(); i++) {
+							ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+							if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 								ta1.append("\n");
 							}
 						}
+						//else dont add Bundesland
 					} else {
 						ta1.setText(tat);
 						ta1.append("Dieser Ort befindet sich bereits in der Liste!\n");
 						ta1.append("Mommentan beinhaltet die Liste:\n");
-						for (int i = 0; i < ende.size(); i++) {
-							ta1.append(ende.get(i).getBeschreibung() + " ");
-							if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+						for (int i = 0; i < effectivePlaces.size(); i++) {
+							ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+							if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 								ta1.append("\n");
 							}
 						}
 					}
-					// else deutschland alle
+					// else add all Bundeslaender
 				} else if (cb1.getSelectedItem().equals("DE") && cb2.getSelectedItem().equals("Alle")) {
-					for (int i = 0; i < anfang.size(); i++) {
-						if (anfang.get(i).getBeschreibung().substring(0, 2).equals("DE")) {
-							ende.add(anfang.get(i));
-							anfang.remove(i);
+					//add all Bundeslaender
+					for (int i = 0; i < possiblePlaces.size(); i++) {
+						if (possiblePlaces.get(i).getBeschreibung().substring(0, 2).equals("DE")) {
+							effectivePlaces.add(possiblePlaces.get(i));
+							possiblePlaces.remove(i);
 							i = 0;
 						}
 					}
 					ta1.setText(tat);
 					ta1.append("Alle deutschen Bundeslaender wurden hinzugefügt!\n");
 					ta1.append("Mommentan beinhaltet die Liste:\n");
-					for (int i = 0; i < ende.size(); i++) {
-						ta1.append(ende.get(i).getBeschreibung() + " ");
-						if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+					for (int i = 0; i < effectivePlaces.size(); i++) {
+						ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+						if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 							ta1.append("\n");
 						}
 					}
 
 					// else Oesterreich/Schweiz/Suedtirol
 				} else {
+					//check if Place is added
 					int inanfang = -1;
-					for (int i = 0; i < anfang.size(); i++) {
-						if (anfang.get(i).getBeschreibung() == cb1.getSelectedItem()) {
+					for (int i = 0; i < possiblePlaces.size(); i++) {
+						if (possiblePlaces.get(i).getBeschreibung() == cb1.getSelectedItem()) {
 							inanfang = i;
 						}
 					}
+					//add Place
 					if (inanfang >= 0) {
-						Ort temp = anfang.get(inanfang);
-						ende.add(temp);
-						anfang.remove(temp);
+						Ort temp = possiblePlaces.get(inanfang);
+						effectivePlaces.add(temp);
+						possiblePlaces.remove(temp);
 						tat = tat + "Ort hinzugefuegt:" + temp.getBeschreibung() + "\n";
 						ta1.setText(tat);
 						ta1.append("Mommentan beinhaltet die Liste:\n");
-						for (int i = 0; i < ende.size(); i++) {
-							ta1.append(ende.get(i).getBeschreibung() + " ");
-							if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+						for (int i = 0; i < effectivePlaces.size(); i++) {
+							ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+							if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 								ta1.append("\n");
 							}
 						}
+						//else dont add Place
 					} else {
 						ta1.setText(tat);
 						ta1.append("Dieser Ort befindet sich bereits in der Liste!");
 						ta1.append("Mommentan beinhaltet die Liste:\n");
-						for (int i = 0; i < ende.size(); i++) {
-							ta1.append(ende.get(i).getBeschreibung() + " ");
-							if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+						for (int i = 0; i < effectivePlaces.size(); i++) {
+							ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+							if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 								ta1.append("\n");
 							}
 						}
@@ -383,38 +409,40 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(b1);
 
+		//removes all Places from list
 		b2.setBounds(380, 10, 110, 70);
 		b2.setText("RESET");
 		b2.setFont(f);
 		b2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < ende.size(); i++) {
-					anfang.add(ende.get(i));
+				for (int i = 0; i < effectivePlaces.size(); i++) {
+					possiblePlaces.add(effectivePlaces.get(i));
 				}
-				ende.removeAll(ende);
+				effectivePlaces.removeAll(effectivePlaces);
 				tat = "Removed all\n";
 				ta1.setText(tat);
 			}
 		});
 		getContentPane().add(b2);
 
+		//adds every not added Place to the list
 		b3.setBounds(500, 10, 200, 70);
 		b3.setText("ADD EVERYTHING");
 		b3.setFont(f);
 		b3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < anfang.size(); i++) {
-					ende.add(anfang.get(i));
+				for (int i = 0; i < possiblePlaces.size(); i++) {
+					effectivePlaces.add(possiblePlaces.get(i));
 				}
-				anfang.removeAll(anfang);
+				possiblePlaces.removeAll(possiblePlaces);
 				tat = tat + "Added all\n";
 				ta1.setText(tat);
 				ta1.append("Mommentan beinhaltet die Liste:\n");
-				for (int i = 0; i < ende.size(); i++) {
-					ta1.append(ende.get(i).getBeschreibung() + " ");
-					if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+				for (int i = 0; i < effectivePlaces.size(); i++) {
+					ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+					if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 						ta1.append("\n");
 					}
 				}
@@ -423,18 +451,15 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(b3);
 
-		// Ausgabe
-
+		// TextArea
 		ta1.setEditable(false);
 		sp1.setBounds(10, 100, 690, 200);
 		getContentPane().add(sp1);
 
-		// Operationen
 		l3.setBounds(10, 340, 120, 30);
 		l3.setText("Beginn:");
 		l3.setFont(f);
 		getContentPane().add(l3);
-		
 
 		l4.setBounds(10, 380, 120, 30);
 		l4.setText("Ende:");
@@ -442,6 +467,7 @@ public class FeiertageGUI extends JFrame {
 		l4.setVisible(true);
 		getContentPane().add(l4);
 
+		//Select beginning year
 		cb3.setBounds(140, 340, 120, 30);
 		cb3.setFont(f);
 		cb3.addActionListener(new ActionListener() {
@@ -455,6 +481,7 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(cb3);
 
+		//Selcet ending year
 		cb4.setBounds(140, 380, 120, 30);
 		cb4.setFont(f);
 		cb4.addActionListener(new ActionListener() {
@@ -468,6 +495,12 @@ public class FeiertageGUI extends JFrame {
 		});
 		getContentPane().add(cb4);
 
+		
+		/*Export into choosen filepath(exportpath)
+		 * Step1: Collect all Feiertage into ArrayList<ArrayList<Feiertag>> finale
+		 * Step2: Bring it into a good format and sort it
+		 * Step3: Export
+		 */
 		b4.setBounds(580, 340, 120, 70);
 		b4.setText("EXPORT");
 		b4.setFont(f);
@@ -478,51 +511,51 @@ public class FeiertageGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 
-					// Schritt1:Feiertage getten
+					// Step1
 					int cb3i = Integer.parseInt((String) cb3.getSelectedItem());
 					int cb4i = Integer.parseInt((String) cb4.getSelectedItem());
-					ArrayList<ArrayList<feiertag>> finale = new ArrayList<ArrayList<feiertag>>();
-					// Jahr
+					ArrayList<ArrayList<Feiertag>> finale = new ArrayList<ArrayList<Feiertag>>();
+					// Year i
 					for (int i = cb3i - 2020; i <= (cb4i - cb3i + (cb3i - 2020)); i++) {
-						ArrayList<feiertag> jahr = new ArrayList<feiertag>();
-						// Orte in ende
-						for (int j = 0; j < ende.size(); j++) {
-							// Feiertage in einem Ort j im Jahr i
-							for (int k = 0; k < ende.get(j).getJahr20().get(i).size(); k++) {
-								feiertag temp = new feiertag(ende.get(j).getJahr20().get(i).get(k).getDatum(),
-										ende.get(j).getJahr20().get(i).get(k).getName());
-								// Kontrolle ob hinzuzufuegender Feiertag bereits existiert
-									// Kontrolle ob Array leer => wichtig dass anfaengt zu schreiben
-								if (jahr.size() == 0 && ende.size() > 0) {
-									temp.addOrt(ende.get(j).getBeschreibung());
-									jahr.add(temp);
+						ArrayList<Feiertag> year = new ArrayList<Feiertag>();
+						// Place j in year i
+						for (int j = 0; j < effectivePlaces.size(); j++) {
+							// Feiertag k in Place j in year i
+							for (int k = 0; k < effectivePlaces.get(j).getJahr20().get(i).size(); k++) {
+								Feiertag temp = new Feiertag(effectivePlaces.get(j).getJahr20().get(i).get(k).getDatum(),
+										effectivePlaces.get(j).getJahr20().get(i).get(k).getName());
+								// Check if ArrayList is empty => else it does not start writing
+								if (year.size() == 0 && effectivePlaces.size() > 0) {
+									temp.addOrt(effectivePlaces.get(j).getBeschreibung());
+									year.add(temp);
 								} else {
-									for (int l = 0; l < jahr.size(); l++) {
-										if (jahr.get(l).getDatum().equals(temp.getDatum())) {
-											jahr.get(l).addOrt(ende.get(j).getBeschreibung());
+									//Check if Feiertag allready exists
+									for (int l = 0; l < year.size(); l++) {
+										//If does not exist => add
+										if (year.get(l).getDatum().equals(temp.getDatum())) {
+											year.get(l).addOrt(effectivePlaces.get(j).getBeschreibung());
 											break;
 										}
-										if (l == (jahr.size() - 1)) {
-											temp.addOrt(ende.get(j).getBeschreibung());
-											jahr.add(temp);
+										if (l == (year.size() - 1)) {
+											//If it does exist => add Place to description
+											temp.addOrt(effectivePlaces.get(j).getBeschreibung());
+											year.add(temp);
 											break;
 										}
-
 									}
 								}
 							}
 						}
-						finale.add(jahr);
+						finale.add(year);
 					}
 
+					//Step2
 					// sort
 					for (int i = 0; i < finale.size(); i++) {
 						Collections.sort(finale.get(i));
 					}
 
-					// Schritt2: gutes Format & export
-					// File
-
+					// bring it into a workable format
 					ArrayList<String[]> finalfinal = new ArrayList<String[]>();
 
 					for (int i = 0; i < finale.size(); i++) {
@@ -533,8 +566,10 @@ public class FeiertageGUI extends JFrame {
 						}
 					}
 
-					try (PrintWriter writer = new PrintWriter(new File(exportpfad + "\\export.csv"))) {
+					//Step3
+					try (PrintWriter writer = new PrintWriter(new File(exportpath + "\\export.csv"))) {
 
+						//build String
 						StringBuilder sb = new StringBuilder();
 						for (int i = 0; i < finalfinal.size(); i++) {
 							sb.append(finalfinal.get(i)[0]);
@@ -543,7 +578,9 @@ public class FeiertageGUI extends JFrame {
 							sb.append('\n');
 						}
 
+						//write
 						writer.write(sb.toString());
+						ta1.append("exported!\n");
 
 					} catch (FileNotFoundException e3) {
 						e3.printStackTrace();
@@ -551,9 +588,8 @@ public class FeiertageGUI extends JFrame {
 
 				} catch (IndexOutOfBoundsException e4) {
 					JOptionPane.showMessageDialog(FeiertageGUI.this,
-						    "Die Daten für Österreich reichen nur bis zum Jahr 2026",
-						    "Achtung",
-						    JOptionPane.WARNING_MESSAGE);
+							"The data for Österreich only is available until 2026", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
@@ -582,9 +618,9 @@ public class FeiertageGUI extends JFrame {
 					tat = tat + "Der Pfad wurde auf \"" + s + "\" gesetzt\n";
 					ta1.setText(tat);
 					ta1.append("Mommentan beinhaltet die Liste:\n");
-					for (int i = 0; i < ende.size(); i++) {
-						ta1.append(ende.get(i).getBeschreibung() + " ");
-						if (ende.size() > 10 && i == (int) (ende.size() / 2)) {
+					for (int i = 0; i < effectivePlaces.size(); i++) {
+						ta1.append(effectivePlaces.get(i).getBeschreibung() + " ");
+						if (effectivePlaces.size() > 10 && i == (int) (effectivePlaces.size() / 2)) {
 							ta1.append("\n");
 						}
 					}
@@ -598,7 +634,7 @@ public class FeiertageGUI extends JFrame {
 	}
 
 	public void setPfad(String s) {
-		exportpfad = s;
+		exportpath = s;
 	}
 
 }

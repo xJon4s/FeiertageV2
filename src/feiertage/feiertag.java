@@ -2,12 +2,12 @@ package feiertage;
 
 import java.util.ArrayList;
 
-public class feiertag implements Comparable<feiertag>{
+public class Feiertag implements Comparable<Feiertag>{
 	private String datum = null;
 	private String name = null;
 	private ArrayList<String> beschreibung = new ArrayList<String>();
 
-	public feiertag(String datum, String name) {
+	public Feiertag(String datum, String name) {
 		this.datum = datum;
 		this.name = name;
 	}
@@ -45,9 +45,8 @@ public class feiertag implements Comparable<feiertag>{
 		return this.name;
 	}
 
-
 	@Override
-	public int compareTo(feiertag o) {
+	public int compareTo(Feiertag o) {
 		int ret = compareDatum(this.datum, o.getDatum());
 		return ret;
 	}
@@ -77,5 +76,4 @@ public class feiertag implements Comparable<feiertag>{
 		}
 		return ret;
 	}
-
 }

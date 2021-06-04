@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class JsonReader {
     return sb.toString();
   }
 
-  public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+  public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException, UnknownHostException {
     InputStream is = new URL(url).openStream();
     try {
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -40,13 +41,11 @@ public class JsonReader {
 	try {
 		json = readJsonFromUrl("https://feiertage-api.de/api/?jahr=2016&nur_land=NW");
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-    ArrayList<feiertag> a = aFabrik.produceFromJSON(json);
+    ArrayList<Feiertag> a = FeiertageFactory.produceFromJSON(json);
     for (int i = 0; i < a.size(); i++) 
         System.out.println(a.get(i).toString()); 
     
